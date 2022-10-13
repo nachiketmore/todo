@@ -1,0 +1,22 @@
+<% if @tasks.blank? %>
+    <p> There are no task currently in system. </p>
+<% else %>
+    <p> Following are task in system </p>
+
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due_Date</th>
+        </thead>
+        <tbody>
+            <% @tasks.each do |t| %>
+                <tr>
+                    <td> <%= t.title %> </td>
+                    <td> <%= t.description %> </td>
+                    <td> <%= t.due_date %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <p><%= link_to "New Task", {:action => 'new' } %></p>
