@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to ToDo,
+    <p>
+      There is a task created for you Following are Details,
+      <table>
+            <tr>
+                <td><strong>Title</strong>:</td>
+                <td><%= @task.title %></td>
+            </tr>
+            <tr>
+                <td><strong>Description</strong>:</td>
+                <td><%= @task.description %></td>
+            </tr>
+            <tr>
+                <td><strong>Due date</strong>:</td>
+                <td><%= @task.due_date %></td>
+            </tr>
+        </table>
+    </p>
+    <p>All the best! to finish your task in time</p>
+  </body>
+</html>

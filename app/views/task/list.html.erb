@@ -1,0 +1,28 @@
+<% if @tasks.blank? %>
+    <h1 style="color: red;"> There are no task currently in system. </h1>
+<% else %>
+    <h1> Following are task in system </h1>
+
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due_Date</th>
+            <th>Action<th>
+        </thead>
+        <tbody>
+            <% @tasks.each do |t| %>
+                <tr>
+                    <td> <%= link_to t.title, {:action=>'show', :id=> t.id } %> </td>
+                    <td> <%= t.description %> </td>
+                    <td> <%= t.due_date %> </td>
+                    <td>
+                        <%= link_to 'Edit', {:action=>'edit', :id=>t.id }%> &nbsp;&nbsp;
+                        <%= link_to 'Delete', { :action=>'delete', :id=>t.id}, :confirm => "Are you want to delete #{t.title} task?" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% end %>
+    <p><%= link_to "New Task", {:action => 'new' } %></p>

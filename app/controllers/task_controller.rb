@@ -4,9 +4,10 @@ class TaskController < ApplicationController
     end
 
     def create
-        @tasks = Task.new(task_params)
+        @task = Task.new(task_params)
 
         if @task.save
+            AutomailerMailer.with(task: @task).task_created.deliver_now
             redirect_to :action => 'list'
         else
             render :action => 'new'
@@ -14,7 +15,7 @@ class TaskController < ApplicationController
     end
 
     def update
-        @tasks = Task.find(params[:id])
+        @task = Task.find(params[:id])
 
         if @task.update(task_params)
             redirect_to :action => 'show', :id => @task
@@ -23,7 +24,7 @@ class TaskController < ApplicationController
         end
     end
 
-    def destroy
+    def delete
         Task.find(params[:id]).destroy
         redirect_to :action => 'list'
     end
